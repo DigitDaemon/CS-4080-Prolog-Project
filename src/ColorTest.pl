@@ -15,8 +15,8 @@
 patternThree(TL, TR, BL, BR) :-
     isBlue(TL),
     isRed(TR),
-    isPurple(BL),
-    isGreen(BR).
+    isGreen(BL),
+    isPurple(BR).
 
 %Color Functions
 printRGB(N) :-

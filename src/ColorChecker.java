@@ -18,7 +18,7 @@ public class ColorChecker {
 		
 		String pattern = "patternThree";
 		
-		Query check = new Query (pattern, new Term[] {lefttop, leftbottom, righttop, rightbottom});
+		Query check = new Query (pattern, new Term[] {lefttop, righttop, leftbottom, rightbottom});
 		
 		System.out.println("That pattern is : " + check.hasSolution());
 	

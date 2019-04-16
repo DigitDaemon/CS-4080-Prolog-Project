@@ -34,27 +34,27 @@ public class ImageProcessor {
 		
 		int values[] = new int[4];
 		c = new Color(image.getRGB(85, 25));
-		values[0] = c.getRGB();
+		values[0] = c.getRGB() & 0xFFFFFF;
 		/*values[0][0] = c.getRed();
 		values[0][1] = c.getGreen();
 		values[0][2] = c.getBlue();*/
 		
 		c = new Color(image.getRGB(530, 25));
-		values[1] = c.getRGB();
+		values[1] = c.getRGB() & 0xFFFFFF;
 		/*values[1][0] = c.getRed();
 		values[1][1] = c.getGreen();
 		values[1][2] = c.getBlue();
 		image.setRGB(620, 20, Color.white.hashCode());*/
 		
 		c = new Color(image.getRGB(530, 460));
-		values[2] = c.getRGB();
+		values[2] = c.getRGB() & 0xFFFFFF;
 		/*values[2][0] = c.getRed();
 		values[2][1] = c.getGreen();
 		values[2][2] = c.getBlue();
 		image.setRGB(620, 460, Color.white.hashCode());*/
 		
 		c = new Color(image.getRGB(85, 460));
-		values[3] = c.getRGB();
+		values[3] = c.getRGB() & 0xFFFFFF;
 		/*values[3][0] = c.getRed();
 		values[3][1] = c.getGreen();
 		values[3][2] = c.getBlue();
