@@ -28,8 +28,8 @@ public class Driver {
 
 		while (procceed == true) {
 			if (cycles > 0) {
-				//ip.takePic();
-				ip.testPic();
+				ip.takePic();
+				//ip.testPic();
 				int corners[];
 				corners = ip.proccessImage();
 
@@ -57,8 +57,11 @@ public class Driver {
 				System.out.println("Blue :" + corners[3][2]);
 				System.out.println("");*/
 				
-				if (ColorChecker.check(corners) == true) 
-					{SaveHandler.save(path, we);}
+				if (ColorChecker.check(corners) == true){
+					SaveHandler.save(path, we);
+					TimeUnit.SECONDS.sleep(9);
+					cycles -= 9;
+					}
 
 				--cycles;
 				TimeUnit.SECONDS.sleep(1);
