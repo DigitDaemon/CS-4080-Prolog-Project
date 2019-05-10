@@ -2,64 +2,54 @@ import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-
 import javax.imageio.ImageIO;
-
 import com.github.sarxos.webcam.Webcam;
+
+/**
+ * The ImageProcessor class takes the picture with the webcam and also handles extracting
+ * the color information from the picture.
+ * @author Thomas
+ *
+ */
 
 public class ImageProcessor {
 	Webcam wc;
-	String we;
-	public ImageProcessor(Webcam wc, String we)
-	{
+	String we; //this is the folder that the image is saved in
+
+	public ImageProcessor(Webcam wc, String we) {
 		this.wc = wc;
 		this.we = we;
 	}
-	
+
 	public void takePic() throws IOException {
-		ImageIO.write(wc.getImage(), "BMP", new File(we + "\\Processing.bmp"));
+		ImageIO.write(wc.getImage(), "BMP", new File(we + "\\Processing.bmp")); //Takes a picture
 	}
-	
-	public void testPic(){
-		
-	}
-	
-	
-	public int[] proccessImage() throws IOException {
+
+	public int[][] proccessImage() throws IOException {
 		BufferedImage image;
 		File input = new File(we + "\\Processing.bmp");
 		image = ImageIO.read(input);
-		
+
 		Color c;
-		
-		int values[] = new int[4];
-		c = new Color(image.getRGB(85, 25));
-		values[0] = c.getRGB() & 0xFFFFFF;
-		/*values[0][0] = c.getRed();
-		values[0][1] = c.getGreen();
-		values[0][2] = c.getBlue();*/
-		
-		c = new Color(image.getRGB(530, 25));
-		values[1] = c.getRGB() & 0xFFFFFF;
-		/*values[1][0] = c.getRed();
-		values[1][1] = c.getGreen();
-		values[1][2] = c.getBlue();
-		image.setRGB(620, 20, Color.white.hashCode());*/
-		
-		c = new Color(image.getRGB(530, 460));
-		values[2] = c.getRGB() & 0xFFFFFF;
-		/*values[2][0] = c.getRed();
-		values[2][1] = c.getGreen();
-		values[2][2] = c.getBlue();
-		image.setRGB(620, 460, Color.white.hashCode());*/
-		
-		c = new Color(image.getRGB(85, 460));
-		values[3] = c.getRGB() & 0xFFFFFF;
-		/*values[3][0] = c.getRed();
-		values[3][1] = c.getGreen();
-		values[3][2] = c.getBlue();
-		image.setRGB(20, 460, Color.white.hashCode());*/
-		
+		int values[][] = new int[5][4];
+
+		for (int i = 0; i < 5; i++) {
+			/**
+			 * This loop reads the color information from the corners and places them in an array
+			 */
+			c = new Color(image.getRGB(85, 19 + (2 * i)));
+			values[i][0] = c.getRGB() & 0xFFFFFF;
+
+			c = new Color(image.getRGB(530, 19 + (2 * i)));
+			values[i][1] = c.getRGB() & 0xFFFFFF;
+
+			c = new Color(image.getRGB(530, 454 + (2 * i)));
+			values[i][2] = c.getRGB() & 0xFFFFFF;
+
+			c = new Color(image.getRGB(85, 454 + (2 * i)));
+			values[i][3] = c.getRGB() & 0xFFFFFF;
+		}
+
 		return values;
 	}
 }

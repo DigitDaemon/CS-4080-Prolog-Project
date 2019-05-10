@@ -8,7 +8,7 @@ public class ColorChecker {
 		Query start = new Query ("consult", new Term [] {new Atom ("src/ColorTest.pl")});
 		System.out.println("ColorTest has " + (start.hasSolution() ? "Initialized" : "Not Initialized"));
 		
-		//int topleft = 0, topright = 0, bottomleft = 0, bottomright = 0;
+		
 		
 		
 		org.jpl7.Integer lefttop = new org.jpl7.Integer (corners[0]);
